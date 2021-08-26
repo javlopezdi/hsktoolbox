@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { RadioGroup } from "@headlessui/react";
-import {
-  setSelectedTempHsk,
-  setSelectedHsk,
-  setCurrentRoute,
-} from "../actions";
+import { setSelectedTempHsk, setSelectedHsk } from "../actions";
 
 import HskOption from "./HskOption";
 
@@ -13,12 +9,7 @@ const UserSettings = ({
   selectedTempHsk,
   setSelectedTempHsk,
   setSelectedHsk,
-  setCurrentRoute,
 }) => {
-  useEffect(() => {
-    setCurrentRoute(window.location.pathname);
-  }, [setCurrentRoute]);
-
   return (
     <div>
       {/* Container */}
@@ -118,5 +109,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   setSelectedTempHsk,
   setSelectedHsk,
-  setCurrentRoute,
 })(UserSettings);

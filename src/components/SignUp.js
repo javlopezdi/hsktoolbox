@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { setCurrentRoute } from "../actions";
-import { setIsDialogOpen } from "../actions";
-import { signUp } from "../actions";
+import { setIsDialogOpen, signUp } from "../actions";
 
 import SignUpForm from "./SignUpForm";
 import SignInDialog from "./SignInDialog";
 
-const SignUp = ({ setCurrentRoute, setIsDialogOpen, signUp }) => {
+let delayedSignInDialog = null;
+
+const SignUp = ({ setIsDialogOpen, signUp }) => {
   useEffect(() => {
-    setCurrentRoute(window.location.pathname);
-  }, [setCurrentRoute]);
+    delayedSignInDialog = <SignInDialog />;
+    return function cleanup() {
+      delayedSignInDialog = null;
+    };
+  }, []);
 
   const onFormSubmit = (formValues) => {
     signUp();
@@ -22,7 +25,7 @@ const SignUp = ({ setCurrentRoute, setIsDialogOpen, signUp }) => {
         <div className="flex flex-col items-center justify-center">
           <div className="mx-auto w-72 px-5 py-8 shadow-lg">
             <h3 className="text-xl font-semibold pb-8">Sign Up</h3>
-            <SignUpForm onFormSubmit={onFormSubmit} />
+            <SignUpForm isSignUp={true} onFormSubmit={onFormSubmit} />
           </div>
           <div className="mx-auto w-72 px-4 py-8">
             <p>If you already have an account</p>
@@ -45,11 +48,9 @@ const SignUp = ({ setCurrentRoute, setIsDialogOpen, signUp }) => {
           </div>
         </div>
       </div>
-      <SignInDialog />
+      {delayedSignInDialog}
     </React.Fragment>
   );
 };
 
-export default connect(null, { setCurrentRoute, setIsDialogOpen, signUp })(
-  SignUp
-);
+export default connect(null, { setIsDialogOpen, signUp })(SignUp);

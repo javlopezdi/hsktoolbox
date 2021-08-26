@@ -23,9 +23,7 @@ const SignInDialog = ({ setIsDialogOpen, isDialogOpen, signIn }) => {
           <Dialog.Title className={`text-lg font-semibold`}>
             Sign In
           </Dialog.Title>
-          <Dialog.Description>
-            <SignInForm onFormSubmit={onFormSubmit} />
-          </Dialog.Description>
+          <SignInForm isSignUp={false} onFormSubmit={onFormSubmit} />
         </div>
       </div>
     </Dialog>

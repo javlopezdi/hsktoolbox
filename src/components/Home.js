@@ -1,12 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { setCurrentRoute } from "../actions";
 
-const Home = ({ setCurrentRoute }) => {
-  useEffect(() => {
-    setCurrentRoute(window.location.pathname);
-  }, [setCurrentRoute]);
+const Home = () => {
   return (
     <div className="bg-hero-pattern h-screen bg-cover bg-center font-sans text-richBlack">
       {/* Container */}
@@ -31,8 +26,4 @@ const Home = ({ setCurrentRoute }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { currentRoute: state.route.currentRoute };
-};
-
-export default connect(mapStateToProps, { setCurrentRoute })(Home);
+export default Home;

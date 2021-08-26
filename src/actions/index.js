@@ -1,5 +1,4 @@
 import {
-  SET_CURRENT_ROUTE,
   SET_IS_DIALOG_OPEN,
   SIGN_IN,
   SIGN_OUT,
@@ -9,13 +8,6 @@ import {
   SET_SELECTED_MULTIPLE_CHOICE_ANSWER,
 } from "./types";
 import history from "../history";
-
-export const setCurrentRoute = (currentRoute) => {
-  return {
-    type: SET_CURRENT_ROUTE,
-    payload: currentRoute,
-  };
-};
 
 export const setIsDialogOpen = (isDialogOpen) => {
   return {

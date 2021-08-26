@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { setCurrentRoute } from "../actions";
 import { Link } from "react-router-dom";
 
 import CategoryCard from "./CategoryCard";
 
-const Progress = ({ setCurrentRoute, selectedHsk }) => {
-  useEffect(() => {
-    setCurrentRoute(window.location.pathname);
-  }, [setCurrentRoute]);
-
+const Progress = ({ selectedHsk }) => {
   return (
     <div>
       <div className="container mx-auto px-5">
@@ -51,4 +46,4 @@ const mapStateToProps = (state) => {
   return { selectedHsk: state.hsk.selectedHsk };
 };
 
-export default connect(mapStateToProps, { setCurrentRoute })(Progress);
+export default connect(mapStateToProps)(Progress);
