@@ -34,7 +34,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      rotate: ["active", "group-hover", "focus"],
+      ringWidth: ["active", "hover"],
     },
   },
   plugins: [],

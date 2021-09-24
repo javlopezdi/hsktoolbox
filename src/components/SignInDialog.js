@@ -7,15 +7,18 @@ import SignInForm from "./SignInForm";
 
 const SignInDialog = ({ setIsDialogOpen, isDialogOpen, signIn }) => {
   const onFormSubmit = (formValues) => {
-    setIsDialogOpen(false);
-    signIn();
+    try {
+      signIn(formValues);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 
   return (
     <Dialog
       open={isDialogOpen}
       onClose={() => setIsDialogOpen(false)}
-      className="fixed z-10 inset-0"
+      className="fixed z-25 inset-0"
     >
       <div className="flex items-center justify-center min-h-screen">
         <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-40" />

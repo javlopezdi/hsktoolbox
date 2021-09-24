@@ -16,13 +16,13 @@ const SignUp = ({ setIsDialogOpen, signUp }) => {
   }, []);
 
   const onFormSubmit = (formValues) => {
-    signUp();
+    signUp(formValues);
   };
 
   return (
     <React.Fragment>
-      <div className="grid grid-cols-2 h-screen font-sans">
-        <div className="flex flex-col items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-screen font-sans">
+        <div className="mt-16 md:mt-0 flex flex-col items-center justify-center">
           <div className="mx-auto w-72 px-5 py-8 shadow-lg">
             <h3 className="text-xl font-semibold pb-8">Sign Up</h3>
             <SignUpForm isSignUp={true} onFormSubmit={onFormSubmit} />
@@ -37,7 +37,7 @@ const SignUp = ({ setIsDialogOpen, signUp }) => {
             </button>
           </div>
         </div>
-        <div className="bg-signUp-pattern bg-cover bg-center m-3 rounded-xl">
+        <div className="hidden md:block bg-signUp-pattern bg-cover bg-center m-3 rounded-xl">
           <div className="mx-auto w-max flex flex-col justify-center h-full">
             <div>
               <h2 className="text-semiWhite font-semibold text-center text-7xl flex flex-col">

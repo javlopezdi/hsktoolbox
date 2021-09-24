@@ -1,31 +1,37 @@
 import React from "react";
 
-import { RadioGroup } from "@headlessui/react";
-
-const HskOption = ({ value, title, content, isOdd, pandaImage }) => {
+const HskOption = ({
+  title,
+  content,
+  isOdd,
+  pandaImage,
+  value,
+  onOptionClick,
+  disabled,
+}) => {
   return (
-    <RadioGroup.Option value={value}>
-      {({ checked }) => (
-        <button
-          className={`
+    <button
+      onClick={() => onOptionClick(value)}
+      disabled={disabled}
+      className={`
+                  flex flex-col
+                  ${isOdd ? "md:flex-row" : "md:flex-row-reverse "}
+                  border-2 rounded-xl my-4
                   ${
-                    checked
-                      ? "ring-4 ring-blueCrayola ring-offset-2 bg-blueCrayola bg-opacity-20 "
-                      : ""
+                    disabled
+                      ? "opacity-40 bg-gray-100"
+                      : "hover:bg-blueCrayola hover:bg-opacity-10 hover:ring-4"
                   }
-                  ${isOdd ? "flex " : "flex flex-row-reverse "}
-                  border-2 rounded my-4`}
-        >
-          <div className="flex-grow p-4">
-            <h3 className="text-center text-lg font-semibold pb-2">{title}</h3>
-            <p className="text-justify">{content}</p>
-          </div>
-          <div
-            className={`bg-${pandaImage} h-48 w-72 bg-cover flex-shrink-0`}
-          ></div>
-        </button>
-      )}
-    </RadioGroup.Option>
+                `}
+    >
+      <div className="flex-grow p-4">
+        <h3 className="text-center text-lg font-semibold pb-2">{title}</h3>
+        <p className="text-justify">{content}</p>
+      </div>
+      <div
+        className={`bg-${pandaImage} h-48 w-full md:w-72 bg-cover flex-shrink-0 rounded-b-xl`}
+      ></div>
+    </button>
   );
 };
 

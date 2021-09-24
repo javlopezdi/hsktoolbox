@@ -7,10 +7,21 @@ const PracticeCard = ({
   children,
   link,
   selectedHsk,
+  disabled = false,
 }) => {
+  console.log(disabled);
   return (
-    <Link className="text-center" to={`/${selectedHsk}/practice/${link}`}>
-      <button className="relative w-72 mx-auto rounded-xl overflow-hidden shadow-xl transition duration-300 transform hover:-translate-y-2">
+    <Link
+      className={`text-center ${disabled ? "opacity-40 cursor-default" : ""}`}
+      to={disabled ? "#" : `/hsk${selectedHsk}/practice/${link}`}
+    >
+      <button
+        className={`relative w-72 mx-auto rounded-xl overflow-hidden shadow-xl ${
+          disabled
+            ? "cursor-default"
+            : "transition duration-300 transform hover:-translate-y-2"
+        }`}
+      >
         {/* Image */}
         <div className="h-72">{children}</div>
         {/* Title */}

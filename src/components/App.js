@@ -7,7 +7,6 @@ import Home from "./Home";
 import SignUp from "./SignUp";
 import Header from "./Header";
 import Progress from "./Progress";
-import Category from "./Category";
 import Practice from "./Practice";
 import UserSettings from "./UserSettings";
 import MultipleChoice from "./MultipleChoice";
@@ -27,7 +26,6 @@ const App = ({ isSignedIn }) => {
             <Route path="/signup" exact component={SignUp} />
             <Route path="/usersettings" exact component={UserSettings} />
             <Route path="/:hsk/progress" exact component={Progress} />
-            <Route path="/:hsk/progress/:category" exact component={Category} />
             <Route path="/:hsk/practice/" exact component={Practice} />
             <Route
               path="/:hsk/practice/multiple"
